@@ -19,7 +19,10 @@ const AppNavigation = () => {
      <Stack.Screen name="Profile" component={Profile}
         options={{headerShown:false}} />
 
-      </Stack.Navigator>
+     <Stack.Screen name="Vid" component={Vid}
+        options={{headerShown:false}} /> 
+
+    </Stack.Navigator>
     </NavigationContainer>
   )
 }

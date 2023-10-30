@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useState } from 'react'
 import { View , Text, ScrollView , Image } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 import Videos from '../components/videos';
 
 const HomeScreen = () => {
@@ -30,24 +29,20 @@ useEffect(()=>{
 getData()
 } ,[])
   return (
-    <View className='flex-1 pt-10 '>
-        <StatusBar style='auto'/>
+    <View className='flex-1 pt-10 bg-slate-900'>
+        <StatusBar style='light'/>
         <View className='py-3 px-6'>
-          <Text className='text-[22px]'>Beha coder</Text>
+          <Text className='text-[22px] text-white'>Beha coder</Text>
         </View>
       <ScrollView>
-      <YoutubePlayer
+      {/* <YoutubePlayer
         height={350}
         play={true}
         videoId={'ruEJCHrh9a0'}
-      /> 
+      />  */}
       
       <Videos data={data}/>
-      
-
-      
-            
-          <View className='   bg-red-600 w-full mx-4 h-[10vh]'>
+       <View className='   bg-red-600 w-full mx-4 h-[10vh]'>
             <Text>
               Asomiddin
             </Text>

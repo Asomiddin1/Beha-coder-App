@@ -1,28 +1,31 @@
-import React from 'react'
-import {  View ,Text ,Image, Dimensions } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
+import {  View ,Text ,Image, Dimensions, TouchableOpacity } from 'react-native'
 
 const {width , height} = Dimensions.get('window')
 
 const Videos = ({data}) => {
 
+const navigation = useNavigation()
   return (
    <View className=''>
-      {data.map(item => (
-        <View key={item.snippet.publishTime}>
-            <View className='px-3 flex-row mb-6  gap-3'>
+      {data.map(item =>(
+        <TouchableOpacity onPress={()=> navigation.navigate('Vid' , item)}  key={item.id.videoId}>
+            <View className='px-3 flex-row mb-6   gap-3'>
           
         <Image 
-        className='rounded-[30px]'
-        width={width / 2} height={height / 6}
+        className='rounded-[10px]'
+        width={width / 2} height={height / 7.1}
          source={{uri:item.snippet.thumbnails.medium.url}} alt='image'/> 
             <View className={` w-[40%] px-2`}>
                {item?.snippet?.title.split().map(c => (
-                <Text className='text-[25px]'>{c}</Text>
+                <Text key={c} className='text-[16px] text-white'>{c}</Text>
                ))}
             </View>
+
             </View>
            
-            </View>
+            </TouchableOpacity>
       ))}
    </View>
   )
