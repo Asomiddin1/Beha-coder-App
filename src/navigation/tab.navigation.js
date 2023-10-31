@@ -52,7 +52,7 @@ const TabNavigation = () => {
 
 				<Tab.Screen name='Vid' 
 				component={Vid}
-				options={{ headerShown: false,  }}
+				options={{ headerShown: false, color:'yellow'}}
 				/>
 				
 			

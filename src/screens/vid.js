@@ -6,7 +6,7 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import { HeartIcon} from 'react-native-heroicons/solid'
 
 const Vid = () => {
-  const [dataVideo, setDataVideo] = useState([])
+  const [like, setLike] = useState(false)
   const { params: item } = useRoute();
   const navigation = useNavigation()
 
@@ -22,7 +22,10 @@ const Vid = () => {
             size={30} />
         </TouchableOpacity>
        
-        <HeartIcon color={'white'} size={30} />
+       <TouchableOpacity onPress={()=> setLike(prev => !prev)}>
+        <HeartIcon color={like ? 'red' : 'white'} size={30} />
+       </TouchableOpacity>
+        
       </SafeAreaView>
 
       <ScrollView>
@@ -43,5 +46,7 @@ const Vid = () => {
     </View>
   )
 }
+
+
 
 export default Vid

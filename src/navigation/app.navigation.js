@@ -7,6 +7,7 @@ import Profile from '../screens/profile';
 import Settings from '../screens/settings';
 
 
+
 const Stack = createNativeStackNavigator()
 
 const AppNavigation = () => {
@@ -17,7 +18,11 @@ const AppNavigation = () => {
         options={{headerShown:false}} />
 
      <Stack.Screen name="Profile" component={Profile}
+         />
+
+        <Stack.Screen name="Settings" component={Settings}
         options={{headerShown:false}} />
+
 
      <Stack.Screen name="Vid" component={Vid}
         options={{headerShown:false}} /> 
