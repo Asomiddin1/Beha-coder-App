@@ -2,12 +2,15 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Intro from '../components/intro';
 
 const Settings = () => {
     const navigation = useNavigation()
     return (
-        <View className='flex-1  justify-center items-center'>
-             <View className='absolute  mx-[5%] mb-[1%] flex-row justify-between items-center px-4 rounded-[20px] bottom-0 w-[90%] h-[10vh] bg-slate-800'>
+        <View className='flex-1 bg-slate-900  justify-center items-center'>
+             <Intro />
+              
+             <View className='absolute  mx-[5%] mb-[8%] flex-row justify-between items-center px-4 rounded-[20px] bottom-0 w-[90%] h-[10vh] bg-slate-800'>
           <TouchableOpacity className='flex-col justify-center items-center' onPress={()=> navigation.navigate('Home')}>
               <Ionicons name='home-outline' color={'white'} size={30}/>
             <Text className='text-white'>Home</Text>

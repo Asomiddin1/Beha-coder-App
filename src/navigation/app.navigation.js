@@ -17,7 +17,8 @@ const AppNavigation = () => {
         <Stack.Screen name="Home" component={HomeScreen}
         options={{headerShown:false}} />
 
-     <Stack.Screen name="Profile" component={Profile}
+     <Stack.Screen name="Profile" 
+       options={{headerShown:false}} component={Profile}
          />
 
         <Stack.Screen name="Settings" component={Settings}
