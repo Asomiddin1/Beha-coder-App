@@ -1,17 +1,43 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
 import IconVixod from 'react-native-vector-icons/Ionicons'
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { HeartIcon} from 'react-native-heroicons/solid'
+import {AsyncStorage} from 'react-native';
 
 const Vid = () => {
   const [like, setLike] = useState(false)
   const { params: item } = useRoute();
   const navigation = useNavigation()
 
-  console.log('videosGlobal', item);
+  storeData = async () => {
+    try {
+      await AsyncStorage.setItem(
+        `${item.id.videoId}`,
+        `${item.id.videoId}`,
+      );
+    } catch (error) {
+      // Error saving data
+    }
+  };
+ 
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem(`${item.id.videoId}`);
+      if (value !== null) {
+          setLike(true)
+      }
+    } catch (error) {
+      // Error retrieving data
+      setLike(false)
+    }
+  };
+ 
 
+  useEffect(()=> {
+    _retrieveData()
+  } ,[])
 
   return (
     <View className='flex-1 bg-slate-900 pt-4 '>
@@ -23,7 +49,10 @@ const Vid = () => {
         </TouchableOpacity>
        
        <TouchableOpacity onPress={()=> setLike(prev => !prev)}>
-        <HeartIcon color={like ? 'red' : 'white'} size={30} />
+        <View onPress={()=> storeData()}>
+              <HeartIcon  color={like ? 'red' : 'white'} size={30} />
+        </View>
+    
        </TouchableOpacity>
         
       </SafeAreaView>

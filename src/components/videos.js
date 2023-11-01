@@ -1,12 +1,25 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import {  View ,Text ,Image, Dimensions, TouchableOpacity } from 'react-native'
+import {AsyncStorage} from 'react-native';
 
 const {width , height} = Dimensions.get('window')
 
 const Videos = ({data}) => {
 
 const navigation = useNavigation()
+
+_storeData = async () => {
+   try {
+     await AsyncStorage.setItem(
+       '@MySuperStore:key',
+       'I like to save it.',
+     );
+   } catch (error) {
+     // Error saving data
+   }
+ };
+
   return (
    <View className=''>
       {data.map(item =>(

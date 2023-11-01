@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, Image, Dimensions,  RefreshControl,TouchableOpacity } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe';
 import Videos from '../components/videos';
 import { useNavigation } from '@react-navigation/native';
@@ -38,6 +38,15 @@ const HomeScreen = () => {
     setTime(false)
   }
 
+  const [refreshing, setRefreshing] = React.useState(false);
+
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
   useEffect(() => {
    setTimeout(introFunc , 2000)
     getData()
@@ -51,7 +60,9 @@ const HomeScreen = () => {
           <Image className='rounded-full w-[50px] h-[50px]' source={require('../../assets/logo.jpg')} />
           <Text className='text-[22px] text-white'>Beha coder</Text>
         </View>
-        <ScrollView>
+        <ScrollView refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }> 
           <View className={``}>
             <Text className='text-white px-6 text-[20px] py-3'>
               All videos
