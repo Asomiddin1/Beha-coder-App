@@ -23,7 +23,7 @@ _storeData = async () => {
   return (
    <View className=''>
       {data.map(item =>(
-        <TouchableOpacity onPress={()=> navigation.navigate('Vid' , item)}  key={item.id.videoId}>
+        <TouchableOpacity onPress={()=> navigation.navigate('Vid' , item)}  key={item.snippet.title}>
             <View className='px-3 flex-row mb-6   gap-3'>
           
         <Image 
@@ -32,7 +32,7 @@ _storeData = async () => {
          source={{uri:item.snippet.thumbnails.medium.url}} alt='image'/> 
             <View className={` w-[40%] px-2`}>
                {item?.snippet?.title.split().map(c => (
-                <Text key={c} className='text-[16px] text-white'>{c}</Text>
+                <Text key={item.snippet.title} className='text-[16px] text-white'>{c}</Text>
                ))}
             </View>
 
