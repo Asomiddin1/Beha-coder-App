@@ -1,0 +1,1 @@
+const ios = 'eas build -p ios'
